@@ -1,0 +1,9 @@
+services:
+  telegram-bot:
+    build: .
+    container_name: telegram_bot
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - ./logs:/app/logs  # Mount logs directory for persistent logs
