@@ -3,17 +3,11 @@ from datetime import datetime, timedelta
 
 import feedparser
 from bs4 import BeautifulSoup
-from dotenv import dotenv_values
 from telegram.ext import (
     ApplicationBuilder,
     ContextTypes,
     JobQueue,
 )
-
-env = dotenv_values(".env")
-BOT_TOKEN = env["BOT_TOKEN"]
-GROUP_CHAT_ID = env["GROUP_CHAT_ID"]
-RSS_URL = env["RSS_URL"]
 
 # Track the newest article + a queue of items to post
 latest_published = None
@@ -27,6 +21,10 @@ logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
     level=logging.INFO
 )
+
+BOT_TOKEN='7938419408:AAGb5tk-OmWCoVuAKv5xLOPNjUElB0_g4i0'
+GROUP_CHAT_ID='@totalaboutai'
+RSS_URL='https://rss.app/feeds/tGAHaxSKFrb2nodC.xml'
 
 async def check_and_post(context: ContextTypes.DEFAULT_TYPE):
     """
